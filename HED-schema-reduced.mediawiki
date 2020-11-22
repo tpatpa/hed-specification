@@ -1,4 +1,4 @@
-HED version: v1.6.18-reduced
+HED version: v1.6.19-reduced
 
 '''Syntax'''  
 
@@ -23,7 +23,8 @@ There are four ways to define the scope of an event.  The most common method is 
 '''Agent''' <nowiki>{extensionAllowed}</nowiki>
 * Animal-agent 
 * Avatar-agent
-* Computational-agent 
+* Computational-agent
+* Controller-agent <nowiki>[An outside controller such as the experimental control software.]</nowiki> 
 * Human-agent 
 * Robotic-agent 
 
@@ -35,6 +36,7 @@ There are four ways to define the scope of an event.  The most common method is 
 **** Dots
 **** Led-pattern
 *** 2D-shape
+**** Clockface
 **** Cross
 **** Ellipse
 ***** Circle
@@ -52,26 +54,24 @@ There are four ways to define the scope of an event.  The most common method is 
 ***** Sphere
 **** Pyradmid
 ** Man-made <nowiki>[A manmade object]</nowiki>
-*** Visualization <nowiki>[A representation of something else -- such as using a stick-figure to represent motion capture data. This also encompasses different modalities such as representing a texture by the pitch of an audio tone.]</nowiki>
-**** Animation
-**** Art-installation
-**** Aerial-view
-**** Braille
-**** Cutout
-**** Image <nowiki>[A still 2-D representation.]</nowiki>
-***** Cartoon
-***** Drawing
-***** Painting
-***** Photograph
-**** Point-light-visualization
-**** Movie
-**** Outline-visualization
-**** Satellite-view
-**** Sculpture
+*** Media
 **** Sound-clip
-**** Stick-figure-visualization
-**** Street-view
-
+**** Visualization <nowiki>[A visual representation of something else -- such as using a stick-figure to represent motion capture data.]</nowiki>
+***** Animation
+***** Art-installation
+***** Braille
+***** Cutout
+***** Image <nowiki>[A still 2-D representation.]</nowiki>
+****** Cartoon
+****** Drawing
+****** Icon
+****** Painting
+****** Photograph
+***** Movie
+***** Outline-visualization
+***** Point-light-visualization
+***** Sculpture
+***** Stick-figure-visualization
 *** Building <nowiki>[Whole building or building feature]</nowiki>
 **** Room
 **** Roof
@@ -101,7 +101,8 @@ There are four ways to define the scope of an event.  The most common method is 
 ****** Display-device
 ******* Head-mounted-display
 ******* LED-display
-******* Screen 
+******* Screen
+******* Screen-window
 ****** Auditory-device
 ******* Headphones
 ******* Screen-speaker
@@ -129,6 +130,7 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Navigational object
 **** Path
 **** Road
+***** Lane
 **** Runway
 **** Sign
 *** Vehicle
@@ -263,10 +265,7 @@ There are four ways to define the scope of an event.  The most common method is 
 **** Toe-off
 *** Trot
 *** Walk
-** Collide
-** Halt
-** Operate
-** Rest 
+
 * Communicate
 ** Communicate-vocally
 *** Cry
@@ -289,7 +288,16 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Sing
 *** Vocalize <nowiki>[Make a sustained vowel sound such as, Ahhh]</nowiki>
 *** Whistle
-
+* Perform <nowiki>[Carry out or accomplish an action or task or function.]</nowiki>
+** Change
+** Collide
+** Fill-out-survey
+** Operate <nowiki>[Control something else.]</nowiki>
+*** Drive <nowiki>[Control something that moves.]</nowiki>
+*** Halt
+*** Steer
+** Play  <nowiki>[As a musical instrument or a game.]</nowiki>
+** Rest 
 * Think
 ** Allow <nowiki>[Allow access to something such as allowing a car to pass]</nowiki> 
 ** Attend
@@ -316,7 +324,8 @@ There are four ways to define the scope of an event.  The most common method is 
 ** ID <nowiki>{requireChild} [An alphanumeric code usually used to identify particular objects.]</nowiki>
 *** <nowiki># {takesValue}</nowiki>
 ** Description <nowiki>{requireChild}[Human-readable text description of the event.]</nowiki> 
-*** <nowiki># {takesValue}</nowiki> 
+*** <nowiki># {takesValue}</nowiki>
+** Definition <nowiki>[A tag used within a tag group also containing a Label tag to indicate that the Label represents that group of tags.]</nowiki> 
 ** Metadata <nowiki>[A tag used within a tag group indicate to designate information about the data such as file size or author.]</nowiki>
 *** Creation-date <nowiki>{requireChild}</nowiki> 
 **** <nowiki># {takesValue, unitClass=datetime}</nowiki>
@@ -355,10 +364,16 @@ There are four ways to define the scope of an event.  The most common method is 
 ** Context <nowiki>[A tag indicating the overall environment and setup of the experiment or a portion of the experiment. This event is often inserted into a recording at the beginning of an experimental record to describe information such as whether the experiment is conducted indoors or outdoors or whether the experiment is conducted in the real-world or in a controlled laboratory setting. Tags specifying subject metadata might also be included. ]</nowiki>
 ** Condition-variable <nowiki>[An aspect of the experiment or task that is to be varied during the experiment. Condition-variables are sometimes called independent variables.]</nowiki>
 ** Control-variable <nowiki>[An aspect of the experiment that is fixed throughout the study and usually is explicitly controlled.]</nowiki>
-** Data-acquisition <nowiki>[A tag used to indicate data acquisition usually used to define an event with temporal scope.]</nowiki>
-** Definition <nowiki>[A tag used within a tag group also containing a Label tag to indicate that the Label represents that group of tags.]</nowiki> 
+** Data-acquisition <nowiki>[An activity related to data acquisition.]</nowiki>
+** Event-stream <nowiki>[An ordered list of events  ]</nowiki>
 ** Namespace <nowiki>[Tag used to indicate a namespace type of definition.]</nowiki>
 ** Permutation <nowiki>[A tag used within a tag group also containing a Label tag to indicate that the Label represents events that are permutations of each other.]</nowiki>
+** Reference-frame <nowiki>[A frame of reference used to express spatial attributes.]</nowiki>
+*** Custom-frame <nowiki><nowiki>[A custom frame of reference which should be defined in terms of one of the default frames of reference or by a library.]</nowiki> 
+*** Room-frame
+*** Screen-frame <nowiki>[HED default frame of reference with origin at center of screen used to display experimental stimuli. Looking out of the screen has +X is horizontal to the right. +Y is up and +Z is out of the front of the screen.]</nowiki>
+*** Subject-frame <nowiki>[HED default frame of reference with origin at the subject Nasion. +X is horizontal to the subject right. +Y is to the subject front and +Z is vertical upward.]</nowiki>
+*** World-frame
 ** Response-variable <nowiki>[An aspect of the experiment or task that is measured as control-variables are varied during the experiment. Response-variables are sometimes called dependent variables.]</nowiki>
 ** Sequence <nowiki>[A tag used within a tag group also containing a Label tag to indicate that the Label represents events related in a sequential order.]</nowiki>
 ** Task <nowiki>[A tag used to indicate a linkage to the task.]</nowiki> 
@@ -392,28 +407,42 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Around
 *** Behind
 *** Below
-*** Boundary-between
+*** Between <nowiki>[Should be grouped with the items between designates.]</nowiki>
+*** Bilateral <nowiki>{Used designate activities or items that occur on both sides or on top and bottom.]</nowiki>
+*** Bottom <nowiki>[At the bottom of something. Should be grouped with the item that it is positionally related to.]</nowiki>
+*** Boundary-of
+*** Center <nowiki>[At the center of something. Should be grouped with the item that it is positionally related to.]</nowiki>
 *** Close-to
-*** Distance-from
+*** Distance-from <nowiki>[Should be grouped with an item from which the distance is measured. The resulting group will usually be grouped with an actual Distance or Angle value.]</nowiki>
 *** Edge-of
 *** Far-from
 *** Inside-of
 *** Left-of
-*** On-bottom
-*** On-top
+*** Left-side
 *** Outside-of
 *** Over
 *** Right-of
+*** Right-side
+*** Top
 *** Under
 ** Directional-relation
 *** Away-from
+*** Backward
 *** Closing
 *** Decreasing
-*** Downhill
+*** Downward
+*** Forward
 *** Increasing
+*** Leftward
+*** Rightward
 *** Opening
 *** Towards
-*** Uphill
+*** Upward
+** Orientational-relation
+*** Horizontally
+*** Oblique
+*** Rotated
+*** Vertically
 ** Temporal-relation
 *** After
 *** Before
@@ -427,8 +456,13 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Flickering <nowiki>[Irregular changes in time]</nowiki>
 *** Repetitive
 *** Stochastic
+*** Varying
 * Quantitative <nowiki>{extensionAllowed}</nowiki>
+** Angle<nowiki>{requireChild}[Angle assumed clockwise from vertical unless grouped with axis.]</nowiki>
+*** <nowiki># {takesValue}</nowiki>  
 ** Fraction <nowiki>{requireChild}[Fraction of items of a particular type.]</nowiki>
+*** <nowiki># {takesValue}</nowiki> 
+** Interval <nowiki></nowiki>
 *** <nowiki># {takesValue}</nowiki>  
 ** Item-count <nowiki>{requireChild}</nowiki>
 *** <nowiki># {takesValue}</nowiki>  
@@ -443,7 +477,8 @@ There are four ways to define the scope of an event.  The most common method is 
 ** Uncertainty <nowiki> {requireChild} </nowiki> 
 *** <nowiki># {takesValue}</nowiki>  
 * Categorical <nowiki>{extensionAllowed}</nowiki>
-** Congruent
+** Congruent <nowiki>{relatedTag=Incongruent}</nowiki>
+** Constrained <nowiki>{relatedTag=Unconstrained}</nowiki>
 ** Correct
 ** Deep
 ** False
@@ -461,6 +496,7 @@ There are four ways to define the scope of an event.  The most common method is 
 ** Subliminal
 ** Supraliminal
 ** True
+** Unconstrained <nowiki>{relatedTag=Constrained}</nowiki>
 ** Valid
 * Descriptive <nowiki>[Indicate the type of thing.]</nowiki>
 ** Abstract
@@ -668,16 +704,29 @@ There are four ways to define the scope of an event.  The most common method is 
 ****** Linen
 ****** LavenderBlush
 ****** MistyRose
-* Presentation
-** Window
-*** 2D-view
-*** 3D-view 
+*** View
+**** 2D-view
+**** 3D-view
+**** Background-view
+**** Bistable-view <nowiki>[Something having two stable visual forms that have two distinguishable stable forms as in optical illusions.]</nowiki>
+**** Foreground-view
+**** Foveal-view <nowiki>[Visual presentation directly on the fovea.]</nowiki>
+**** Map-view <nowiki>[A representation of a geographical location.]</nowiki>
+***** Aerial-view <nowiki>[A representation from an overhead view such as captured by a drone.]</nowiki>
+***** Satellite-view <nowiki>[A representation as captured by technology such as a satellite.]</nowiki>
+***** Street-view <nowiki>[A panoramic view from a position on the ground.]</nowiki>
+**** Peripheral-view
 * Spatiotemporal <nowiki>{extensionAllowed}</nowiki>
 ** Spatial
-*** Bearing <nowiki>{requireChild} [Coordinate system is inferred from Attribute/Location. To specify a vector combine subnodes with number --- for example Attribute/Top/10, Attribute/Direction/Left/5 to create a vector with coordinates 10 and 5]</nowiki>
 *** Orientation  
-*** Location {requireChild} <nowiki>[Spot or center of an area. Use Area were you are referring to something with significant extent and emphasizing its boundaries, like a city]</nowiki> 
-*** Distance <nowiki>{requireChild}</nowiki> 
+*** Position {requireChild} <nowiki>[Coordinates with respect a specified frame of reference or the default Screen-frame if no frame is given.] </nowiki>
+**** X-position <nowiki>{requireChild}</nowiki> 
+***** <nowiki># {takesValue, isNumeric, unitClass=physicalLength}</nowiki> 
+**** Y-position <nowiki>{requireChild}</nowiki> 
+***** <nowiki># {takesValue, isNumeric, unitClass=physicalLength}</nowiki>  
+**** Z-position <nowiki>{requireChild}</nowiki> 
+***** <nowiki># {takesValue, isNumeric, unitClass=physicalLength}</nowiki>   
+*** Distance <nowiki>{requireChild}[Distance from a specified position in a specified Direction]</nowiki> 
 **** <nowiki># {takesValue, isNumeric, unitClass=physicalLength}</nowiki> 
 *** Size <nowiki>{requireChild}</nowiki> 
 **** Area <nowiki>{requireChild}</nowiki> 
@@ -693,7 +742,6 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Surface-properties
 **** Rough
 **** Smooth
-
 ** Resolution
 *** IO-resolution <nowiki>{requireChild}</nowiki> 
 **** Screen-resolution <nowiki>{requireChild}[Number of pixels in each dimension for a digital display device.]</nowiki> 
@@ -708,25 +756,25 @@ There are four ways to define the scope of an event.  The most common method is 
 **** <nowiki># {takesValue} </nowiki> 
 ** Temporal
 *** Asynchronous
+*** Delay <nowiki>[Indicator of some amount of time elapsed before something happens.]</nowiki>
 *** Duration <nowiki>{requireChild} [An offset that is implicit after duration time passed from the onset]</nowiki>
 **** <nowiki># {takesValue, isNumeric, unitClass=time}</nowiki> 
 *** Onset
 *** Offset
 *** Pause <nowiki>[Indicating something stopped such as a break or waiting for input.]</nowiki>    
-
 *** Response-start-delay <nowiki>{requireChild} [How long the start of the response is delayed from the stimulus onset.]</nowiki>
 **** <nowiki># {takesValue, isNumeric, unitClass=time}</nowiki> 
 *** Response-end-delay <nowiki>{requireChild} [How long the end of the response is delayed from the stimulus onset.]</nowiki>
 **** <nowiki># {takesValue, isNumeric, unitClass=time}</nowiki> 
+*** Sudden
 *** Synchronous
-*** Temporal-value
+*** Temporal-value <nowiki>{requireChild}</nowiki>
 **** <nowiki># {takesValue, isNumeric, unitClass=time}</nowiki> 
 *** Time-out
 *** Time-sync <nowiki>[Indicates a marker inserted into the recorded data to allow post hoc synchronization of concurrently recorded data streams.]</nowiki>
 ** Rate-of-change
 *** Acceleration
 **** <nowiki># {takesValue, isNumeric, unitClass=acceleration}</nowiki>  
-*** Direction-change
 *** Jerk-rate <nowiki>[Rate at which an object's acceleration changes with respect to time.]</nowiki> 
 **** <nowiki># {takesValue, isNumeric, unitClass=jerk}</nowiki>
 *** Sampling-rate <nowiki>{requireChild}[Number of measurements per unit time.]</nowiki> 
@@ -749,7 +797,6 @@ There are four ways to define the scope of an event.  The most common method is 
 ** Rural
 *** Wooden-walkway
 ** Terrain
-
 *** Composite-terrain
 *** Dirt-terrain
 *** Grassy-terrain
@@ -817,7 +864,8 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Father
 *** Mother
 *** Sister
-** Task-role <nowiki> {requireChild} [The role of the agent in the task.]</nowiki>  
+** Task-role <nowiki> {requireChild} [The role of the agent in the task.]</nowiki>
+*** Experiment-controller
 *** Experiment-subject
 *** Experimenter
 *** Follower
@@ -832,8 +880,9 @@ There are four ways to define the scope of an event.  The most common method is 
 *** Associated-with-self <nowiki>[Item such as a cup belonging to the participant]</nowiki> 
 * Task-related
 ** Action-judgment <nowiki>[External judgment assumed to be ground truth such as from an experiment control software or an annotator about participant actions such as answering a question, failing to answer in time, etc. Related to participant indication]</nowiki> 
+** Activity
 ** Appropriate
-** Background
+** Background-task
 ** Correction
 ** Cue
 ** Distractor 
@@ -864,6 +913,7 @@ There are four ways to define the scope of an event.  The most common method is 
 ** Participant-response <nowiki> [Something related to a participant's actions in performing the task.]</nowiki>
 ** Planned
 ** Penalizing
+** Primary-task
 ** Priming
 ** Rewarding 
 ** Success
@@ -1005,11 +1055,13 @@ There are four ways to define the scope of an event.  The most common method is 
 * position <nowiki>[Used to specify the order of the required and recommended tags in canonical order for display. The position attribute value should be an integer and the order can start at 0 or 1. Required or recommended tags without this attribute or with negative position will be shown after the others in canonical ordering.]</nowiki> 
 * predicateType <nowiki> [One of propertyOf, subclassOf, passThrough -- used to facilitate mapping to OWL or RDF.]</nowiki>  
 * recommended  <nowiki>[A HED string tagging an event is recommended to include this tag.]</nowiki> 
+* relatedTag <nowiki>[Additional HED tags suggested to be used with this tag. This attribute is used by tagging tools.]</nowiki> 
 * requireChild  <nowiki>[One of its descendants must be chosen to tag an event.]</nowiki> 
-*  required <nowiki>[Every HED string tagging an event should include this tag.]</nowiki>
+* required <nowiki>[Every HED string tagging an event should include this tag.]</nowiki>
 * SIUnit  <nowiki>[Designates the name of an SI unit so it can be modified by multiple and submultiple names. Note that some units such as byte are designated as SI units although they are not part of the standard.]</nowiki>
 * SIUnitModifier <nowiki>[SI unit modifier indicating a multiple or submultiple of a base unit.]</nowiki> 
-* SIUnitSymbolModifier <nowiki>[SI unit symbol modifier indicating a multiple or submultiple of a base unit symbol.]</nowiki> 
+* SIUnitSymbolModifier <nowiki>[SI unit symbol modifier indicating a multiple or submultiple of a base unit symbol.]</nowiki>
+* suggestedTag <nowiki>[Additional HED tags suggested to be used with this tag. This attribute is used by tagging tools.]</nowiki> 
 * takesValue <nowiki>[This tag will have a "#" placeholder child in the schema which is expected to be replaced with a user-defined value.] </nowiki> 
 * unique <nowiki>[Only one of this tag or its descendants can be used within a single tag group or event.]</nowiki> 
 * unitSymbol <nowiki>[Abbreviation or symbol representing a type of unit. Unit symbols  represent both the singular and the plural and thus cannot be pluralized.]</nowiki> 
